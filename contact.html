@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | SHPE UPRM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; }
+        .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);}
+        h1 { color: #006341; }
+        label { display: block; margin-top: 16px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 6px; border: 1px solid #ccc; border-radius: 4px; }
+        button { margin-top: 20px; background: #006341; color: #fff; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #004d2c; }
+        .contact-info { margin-top: 32px; }
+        .contact-info p { margin: 6px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact SHPE UPRM</h1>
+        <form action="mailto:shpe@uprm.edu" method="post" enctype="text/plain">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="contact-info">
+            <h2>Other Ways to Reach Us</h2>
+            <p>Email: <a href="mailto:shpe@uprm.edu">shpe@uprm.edu</a></p>
+            <p>Address: SHPE UPRM, University of Puerto Rico Mayagüez, Mayagüez, PR 00681</p>
+        </div>
+    </div>
+</body>
+</html>
