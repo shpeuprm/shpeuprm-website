@@ -3,31 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Application</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <title>About SHPE UPRM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #003366;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        h2 {
+            color: #003366;
+            margin-top: 1rem;
+        }
+        .about-section {
+            margin-top: 1.5rem;
+            color: #222;
+            line-height: 1.7;
+        }
+        .about-list {
+            margin: 1rem 0 0 1.5rem;
+            color: #003366;
+        }
+    </style>
 </head>
 <body>
-    <div class="calendar-container">
-        <div class="calendar-header">
-            <h2>About This App</h2>
+    <header>
+        <h1>About SHPE UPRM</h1>
+        <p>Learn more about our mission, vision, and what we do!</p>
+    </header>
+    <div class="container">
+        <h2>Who We Are</h2>
+        <div class="about-section">
+            SHPE UPRM is dedicated to empowering Hispanic students in STEM fields at the University of Puerto Rico, Mayagüez. We foster academic excellence, professional development, and a strong sense of community.
         </div>
-        <div class="about-content">
-            <p>
-                Welcome to our application! This project is designed to help users manage their schedules and stay organized.
-            </p>
-            <p>
-                Features include:
-            </p>
-            <ul>
-                <li>Interactive calendar view</li>
-                <li>Easy navigation between months</li>
-                <li>Modern, responsive design</li>
-            </ul>
-            <p>
-                Built with HTML, CSS, and JavaScript.
-            </p>
+        <h2>Our Mission</h2>
+        <div class="about-section">
+            To promote the development of Hispanic students in engineering, science, and other technical fields through networking, mentorship, and leadership opportunities.
         </div>
+        <h2>What We Offer</h2>
+        <ul class="about-list">
+            <li>Professional workshops and networking events</li>
+            <li>Academic support and mentorship</li>
+            <li>Community outreach and volunteering</li>
+            <li>Leadership development</li>
+        </ul>
     </div>
-    <script src="scripts/app.js"></script>
 </body>
 </html>
