@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
+import { motion } from "framer-motion";
+import { fadeIn, fadeInUp, scaleIn, fadeInLeft, fadeInRight } from "@/lib/animations";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -67,12 +69,26 @@ export default function ContactPage() {
     <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-secondary to-secondary-light text-white py-16">
-        <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl md:text-2xl text-gray-100">
+        <motion.div
+          className="container-custom text-center"
+          {...fadeIn}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold mb-4"
+            {...fadeInUp}
+          >
+            Contact Us
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl text-gray-100"
+            {...fadeInUp}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Get in touch with SHPE UPRM
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Contact Section */}
@@ -80,7 +96,13 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="card">
+            <motion.div
+              className="card"
+              {...fadeInLeft}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
               <h2 className="section-subheading mb-6">Send Us a Message</h2>
 
               {status.type && (
@@ -161,11 +183,17 @@ export default function ContactPage() {
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
-            </div>
+            </motion.div>
 
             {/* Contact Information */}
             <div className="space-y-6">
-              <div className="card">
+              <motion.div
+                className="card"
+                {...fadeInRight}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+              >
                 <h2 className="section-subheading mb-6">
                   Other Ways to Reach Us
                 </h2>
@@ -213,10 +241,17 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Social Media */}
-              <div className="card bg-gradient-to-br from-primary to-secondary text-white">
+              <motion.div
+                className="card bg-gradient-to-br from-primary to-secondary text-white"
+                {...fadeInRight}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
                 <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
                 <p className="mb-6 text-gray-100">
                   Follow us on social media to stay updated with our latest
@@ -242,10 +277,17 @@ export default function ContactPage() {
                     LinkedIn
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
               {/* FAQ */}
-              <div className="card">
+              <motion.div
+                className="card"
+                {...fadeInRight}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 <h3 className="text-xl font-bold text-primary mb-4">
                   Quick Questions?
                 </h3>
@@ -254,7 +296,7 @@ export default function ContactPage() {
                   <li>• For urgent matters, please email directly</li>
                   <li>• Meeting times posted on Events page</li>
                 </ul>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

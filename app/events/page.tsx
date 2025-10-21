@@ -1,10 +1,7 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Events",
-  description:
-    "Stay up to date with SHPE UPRM's latest events and activities. Join us for workshops, networking nights, and general meetings.",
-};
+import { motion } from "framer-motion";
+import { fadeIn, fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 
 interface Event {
   title: string;
@@ -39,7 +36,11 @@ const upcomingEvents: Event[] = [
 
 function EventCard({ event }: { event: Event }) {
   return (
-    <div className="card hover:border-l-4 hover:border-secondary transition-all duration-300">
+    <motion.div
+      className="card hover:border-l-4 hover:border-secondary transition-all duration-300"
+      {...scaleIn}
+      whileHover={{ scale: 1.02 }}
+    >
       <h3 className="text-2xl font-bold text-primary mb-3">{event.title}</h3>
       <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-3 text-gray-600">
         <div className="flex items-center mb-2 sm:mb-0">
@@ -52,7 +53,7 @@ function EventCard({ event }: { event: Event }) {
         </div>
       </div>
       <p className="text-gray-700 leading-relaxed">{event.description}</p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -61,37 +62,75 @@ export default function EventsPage() {
     <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-secondary-bright to-secondary text-white py-16">
-        <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <motion.div
+          className="container-custom text-center"
+          {...fadeIn}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold mb-4"
+            {...fadeInUp}
+          >
             SHPE UPRM Events
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-100">
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl text-gray-100"
+            {...fadeInUp}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Stay up to date with our latest events and activities!
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Events Section */}
       <div className="container-custom py-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="section-heading mb-8">Upcoming Events</h2>
+          <motion.h2
+            className="section-heading mb-8"
+            {...fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            Upcoming Events
+          </motion.h2>
 
           {upcomingEvents.length > 0 ? (
-            <div className="space-y-6">
+            <motion.div
+              className="space-y-6"
+              {...staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
               {upcomingEvents.map((event, index) => (
                 <EventCard key={index} event={event} />
               ))}
-            </div>
+            </motion.div>
           ) : (
-            <div className="card text-center py-12">
+            <motion.div
+              className="card text-center py-12"
+              {...scaleIn}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
               <p className="text-xl text-gray-600">
                 No upcoming events at the moment. Check back soon!
               </p>
-            </div>
+            </motion.div>
           )}
 
           {/* Calendar Integration CTA */}
-          <div className="mt-12 card bg-gradient-to-r from-primary to-secondary text-white">
+          <motion.div
+            className="mt-12 card bg-gradient-to-r from-primary to-secondary text-white"
+            {...scaleIn}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">
                 Want to see more events?
@@ -107,13 +146,27 @@ export default function EventsPage() {
                 View Full Calendar
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Past Events Section */}
           <div className="mt-16">
-            <h2 className="section-heading mb-6">Past Events Highlights</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="card">
+            <motion.h2
+              className="section-heading mb-6"
+              {...fadeInUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              Past Events Highlights
+            </motion.h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              {...staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              <motion.div className="card" {...scaleIn}>
                 <h4 className="text-xl font-semibold text-secondary mb-2">
                   Spring 2025 Career Fair
                 </h4>
@@ -121,8 +174,12 @@ export default function EventsPage() {
                   Over 50 students connected with leading companies in
                   engineering and technology.
                 </p>
-              </div>
-              <div className="card">
+              </motion.div>
+              <motion.div
+                className="card"
+                {...scaleIn}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
                 <h4 className="text-xl font-semibold text-secondary mb-2">
                   Leadership Summit
                 </h4>
@@ -130,8 +187,12 @@ export default function EventsPage() {
                   Members developed essential leadership skills through
                   interactive workshops and panel discussions.
                 </p>
-              </div>
-              <div className="card">
+              </motion.div>
+              <motion.div
+                className="card"
+                {...scaleIn}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <h4 className="text-xl font-semibold text-secondary mb-2">
                   Community Outreach Day
                 </h4>
@@ -139,8 +200,12 @@ export default function EventsPage() {
                   SHPE members volunteered with local schools to inspire the
                   next generation of engineers.
                 </p>
-              </div>
-              <div className="card">
+              </motion.div>
+              <motion.div
+                className="card"
+                {...scaleIn}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
                 <h4 className="text-xl font-semibold text-secondary mb-2">
                   Tech Talk Series
                 </h4>
@@ -148,8 +213,8 @@ export default function EventsPage() {
                   Industry professionals shared insights on emerging
                   technologies and career paths.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
