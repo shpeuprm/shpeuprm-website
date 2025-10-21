@@ -90,8 +90,8 @@ export default function AboutPage() {
             {...anim}
           >
             {[
-              { href: "#who-we-are", label: "Who We Are" },
-              { href: "#our-mission", label: "Our Mission" },
+              { href: "#our-mission", label: "Who We Are" },
+              { href: "#our-vision", label: "Our Mission" },
               { href: "#what-we-offer", label: "What We Offer" },
               { href: "#our-values", label: "Our Values" },
             ].map((item) => (
@@ -111,22 +111,22 @@ export default function AboutPage() {
       {/* Main */}
       <main id="main" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
         <div className="mx-auto max-w-3xl">
-          {/* Who We Are */}
+          {/* Our Mission */}
           <Section id="who-we-are" title="Who We Are" anim={anim} fadeInUp={fadeInUp}>
             <Card anim={anim} scaleIn={scaleIn}>
               <p className="text-lg leading-8 text-gray-700">
-                SHPE UPRM empowers Hispanic students in STEM at the University of Puerto Rico, Mayagüez.
-                We foster academic excellence, professional growth, and a supportive comunidad.
+                Our mission at SHPE-UPRM is to empower Hispanic students in STEM by fostering academic excellence, professional development, 
+                and community engagement—preparing future leaders to thrive in industry and beyond.
               </p>
             </Card>
           </Section>
 
-          {/* Our Mission */}
+          {/* Our Vision */}
           <Section id="our-mission" title="Our Mission" anim={anim} fadeInUp={fadeInUp}>
             <Card anim={anim} scaleIn={scaleIn}>
               <p className="text-lg leading-8 text-gray-700">
-                Promote the development of Hispanic students in engineering, science, and technical fields
-                through mentorship, leadership opportunities, and industry‑connected programming.
+                Our vision is to cultivate a vibrant community of Hispanic STEM leaders at UPRM—driven by innovation, empowered by opportunity, 
+                and united in advancing diversity, equity, and excellence across academia and industry.
               </p>
             </Card>
           </Section>
