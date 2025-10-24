@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     "Professional Development",
   ],
   authors: [{ name: "SHPE UPRM" }],
+  icons: {
+    icon: "/PNG/SHPE_logo_vert_University of Puerto Rico_DKBG.png",
+    shortcut: "/PNG/SHPE_logo_vert_University of Puerto Rico_DKBG.png",
+    apple: "/PNG/SHPE_logo_vert_University of Puerto Rico_DKBG.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
