@@ -9,15 +9,15 @@ export default function Home() {
     <>
       {/* Brand palette as CSS variables (exact hex from SHPE guide) */}
       <style jsx global>{`
-        :root{
-          --shpe-navy: #001F5B;   /* Pantone 281 */
-          --shpe-blue: #0070C0;   /* Pantone 660 */
-          --shpe-teal: #72A9BE;   /* Pantone 7695 */
-          --shpe-orange: #FD652F; /* Pantone 1655 */
-          --shpe-red: #D33A02;    /* Pantone 485 */
-          --shpe-gray: #626366;   /* Pantone 446 */
+        :root {
+          --shpe-navy: #001f5b; /* Pantone 281 */
+          --shpe-blue: #0070c0; /* Pantone 660 */
+          --shpe-teal: #72a9be; /* Pantone 7695 */
+          --shpe-orange: #fd652f; /* Pantone 1655 */
+          --shpe-red: #d33a02; /* Pantone 485 */
+          --shpe-gray: #626366; /* Pantone 446 */
           --surface: #ffffff;
-          --bg: #0b1220;          /* deep navy-tinted background for hero bleed */
+          --bg: #0b1220; /* deep navy-tinted background for hero bleed */
         }
       `}</style>
 
@@ -32,7 +32,10 @@ export default function Home() {
           <div
             aria-hidden="true"
             className="absolute -top-24 right-[-10%] h-72 w-72 rounded-full blur-3xl opacity-30"
-            style={{ background: "radial-gradient(60% 60% at 50% 50%, var(--shpe-teal), transparent)" }}
+            style={{
+              background:
+                "radial-gradient(60% 60% at 50% 50%, var(--shpe-teal), transparent)",
+            }}
           />
           {/* orange ribbon */}
           <div className="absolute left-1/2 top-0 -translate-x-1/2 h-px w-[80%] bg-gradient-to-r from-transparent via-[var(--shpe-orange)] to-transparent opacity-40" />
@@ -45,7 +48,10 @@ export default function Home() {
               whileInView="animate"
               viewport={{ once: true }}
             >
-              <motion.h1 className="text-4xl font-bold tracking-tight sm:text-6xl" {...fadeInUp}>
+              <motion.h1
+                className="text-4xl font-bold tracking-tight sm:text-6xl"
+                {...fadeInUp}
+              >
                 Society of Hispanic Professional Engineers
               </motion.h1>
 
@@ -62,13 +68,22 @@ export default function Home() {
                 {...fadeInUp}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Empowering Hispanic engineers at the University of Puerto Rico Mayagüez.
+                Stay up to date with our events, resources, and opportunities.
+              </motion.p>
+
+              <motion.p
+                className="mt-3 text-base/7 text-slate-300"
+                {...fadeInUp}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                We foster academic excellence, professional development, and a
+                strong community of Hispanic engineers and STEM professionals.
               </motion.p>
 
               <motion.div
                 className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
                 {...fadeInUp}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
               >
                 {/* Primary (orange) */}
                 <Link
@@ -93,12 +108,17 @@ export default function Home() {
         </section>
 
         {/* =========================
-            Welcome
+            Features
         ========================== */}
-        <section className="py-16 sm:py-20">
-          <div className="mx-auto max-w-5xl px-6 lg:px-8">
+        <section className="relative overflow-hidden py-20 sm:py-24 bg-gradient-to-b from-slate-50 to-white">
+          {/* Decorative elements */}
+          <div className="absolute top-0 left-0 w-72 h-72 bg-[var(--shpe-teal)]/5 rounded-full blur-3xl -z-10" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[var(--shpe-blue)]/5 rounded-full blur-3xl -z-10" />
+
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            {/* Section Header */}
             <motion.div
-              className="text-center"
+              className="text-center max-w-3xl mx-auto"
               {...fadeIn}
               initial="initial"
               whileInView="animate"
@@ -108,90 +128,180 @@ export default function Home() {
                 className="text-3xl font-bold tracking-tight text-[var(--shpe-navy)] sm:text-4xl"
                 {...fadeInUp}
               >
-                Welcome to SHPE UPRM!
+                What We Offer
               </motion.h2>
               <motion.p
-                className="mx-auto mt-4 max-w-3xl text-lg text-slate-700"
+                className="mt-4 text-base text-slate-600"
                 {...fadeInUp}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Stay up to date with our events, resources, and opportunities.
-              </motion.p>
-              <motion.p
-                className="mx-auto mt-2 max-w-3xl text-base text-slate-600"
-                {...fadeInUp}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                We foster academic excellence, professional development, and a strong community of Hispanic engineers and STEM professionals.
+                Discover the benefits and opportunities that come with being
+                part of SHPE UPRM
               </motion.p>
             </motion.div>
-          </div>
-        </section>
-
-        {/* =========================
-            Features
-        ========================== */}
-        <section className="py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.h3
-              className="text-center text-2xl font-bold tracking-tight text-[var(--shpe-navy)] sm:text-3xl"
-              {...fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              What We Offer
-            </motion.h3>
 
             <motion.div
-              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
               {...staggerContainer}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
             >
-              {/* Card 1 */}
+              {/* Card 1 - Academic Excellence */}
               <motion.div
-                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                className="group relative rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:ring-[var(--shpe-blue)]/30"
                 {...scaleIn}
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--shpe-blue)]/10 text-2xl">
-                  🎓
+                {/* Decorative gradient blob */}
+                <div className="absolute -top-1 -right-1 w-24 h-24 bg-gradient-to-br from-[var(--shpe-blue)]/10 to-transparent rounded-full blur-2xl -z-10 group-hover:scale-150 transition-transform duration-500" />
+
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--shpe-blue)]/10 to-[var(--shpe-blue)]/5 ring-1 ring-[var(--shpe-blue)]/20 transition-all group-hover:scale-110 group-hover:ring-[var(--shpe-blue)]/40">
+                  <svg
+                    className="w-7 h-7 text-[var(--shpe-blue)]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-[var(--shpe-navy)]">Academic Excellence</h4>
-                <p className="mt-2 text-sm text-slate-600">
-                  Support and mentorship to help you succeed in your academic journey.
+
+                <h3 className="text-xl font-bold text-[var(--shpe-navy)] mb-3">
+                  Academic Excellence
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Support and mentorship to help you succeed in your academic
+                  journey through study groups, tutoring, and peer
+                  collaboration.
                 </p>
+
+                {/* Hover indicator */}
+                <div className="mt-6 flex items-center text-sm font-medium text-[var(--shpe-blue)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>Learn more</span>
+                  <svg
+                    className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
               </motion.div>
 
-              {/* Card 2 */}
+              {/* Card 2 - Professional Development */}
               <motion.div
-                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                className="group relative rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:ring-[var(--shpe-teal)]/30"
                 {...scaleIn}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--shpe-teal)]/15 text-2xl">
-                  💼
+                {/* Decorative gradient blob */}
+                <div className="absolute -top-1 -right-1 w-24 h-24 bg-gradient-to-br from-[var(--shpe-teal)]/10 to-transparent rounded-full blur-2xl -z-10 group-hover:scale-150 transition-transform duration-500" />
+
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--shpe-teal)]/10 to-[var(--shpe-teal)]/5 ring-1 ring-[var(--shpe-teal)]/20 transition-all group-hover:scale-110 group-hover:ring-[var(--shpe-teal)]/40">
+                  <svg
+                    className="w-7 h-7 text-[var(--shpe-teal)]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-[var(--shpe-navy)]">Professional Development</h4>
-                <p className="mt-2 text-sm text-slate-600">
-                  Workshops, networking events, and career opportunities.
+
+                <h3 className="text-xl font-bold text-[var(--shpe-navy)] mb-3">
+                  Professional Development
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Workshops, networking events, and career opportunities to
+                  prepare you for your future in engineering and technology.
                 </p>
+
+                {/* Hover indicator */}
+                <div className="mt-6 flex items-center text-sm font-medium text-[var(--shpe-teal)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>Learn more</span>
+                  <svg
+                    className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
               </motion.div>
 
-              {/* Card 3 */}
+              {/* Card 3 - Community */}
               <motion.div
-                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                className="group relative rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:ring-[var(--shpe-orange)]/30"
                 {...scaleIn}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--shpe-orange)]/15 text-2xl">
-                  🤝
+                {/* Decorative gradient blob */}
+                <div className="absolute -top-1 -right-1 w-24 h-24 bg-gradient-to-br from-[var(--shpe-orange)]/10 to-transparent rounded-full blur-2xl -z-10 group-hover:scale-150 transition-transform duration-500" />
+
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--shpe-orange)]/10 to-[var(--shpe-orange)]/5 ring-1 ring-[var(--shpe-orange)]/20 transition-all group-hover:scale-110 group-hover:ring-[var(--shpe-orange)]/40">
+                  <svg
+                    className="w-7 h-7 text-[var(--shpe-orange)]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-[var(--shpe-navy)]">Community</h4>
-                <p className="mt-2 text-sm text-slate-600">
-                  Build lasting connections with fellow Hispanic engineers.
+
+                <h3 className="text-xl font-bold text-[var(--shpe-navy)] mb-3">
+                  Community
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Build lasting connections with fellow Hispanic engineers and
+                  create a supportive network that lasts beyond graduation.
                 </p>
+
+                {/* Hover indicator */}
+                <div className="mt-6 flex items-center text-sm font-medium text-[var(--shpe-orange)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <svg
+                    className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -220,7 +330,8 @@ export default function Home() {
                 {...fadeInUp}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Join a vibrant community of Hispanic engineers making a difference.
+                Join a vibrant community of Hispanic engineers making a
+                difference.
               </motion.p>
 
               <motion.div
