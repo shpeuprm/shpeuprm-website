@@ -15,9 +15,9 @@ export default function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
     { href: "/events", label: "Events" },
     { href: "/resources", label: "Resources" },
+    { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -42,9 +42,10 @@ export default function Header() {
     const handleTab = (e: KeyboardEvent) => {
       if (e.key !== "Tab" || !mobileMenuRef.current) return;
 
-      const focusableElements = mobileMenuRef.current.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      );
+      const focusableElements =
+        mobileMenuRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -71,7 +72,8 @@ export default function Header() {
   // Auto-close when resizing to desktop
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
-    const handler = (e: MediaQueryListEvent) => e.matches && setIsMenuOpen(false);
+    const handler = (e: MediaQueryListEvent) =>
+      e.matches && setIsMenuOpen(false);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
@@ -225,7 +227,10 @@ export default function Header() {
 
                 {/* Links */}
                 <div className="px-6 pt-6 pb-32">
-                  <nav className="flex flex-col space-y-2" aria-label="Mobile menu">
+                  <nav
+                    className="flex flex-col space-y-2"
+                    aria-label="Mobile menu"
+                  >
                     {navLinks.map((link) => {
                       const isActive = pathname === link.href;
                       return (
@@ -272,37 +277,58 @@ export default function Header() {
                 }
 
                 /* Backdrop */
-                .menu-backdrop[data-state='open'] {
+                .menu-backdrop[data-state="open"] {
                   animation: fadeIn 250ms ease-out;
                 }
-                .menu-backdrop[data-state='closing'] {
+                .menu-backdrop[data-state="closing"] {
                   animation: fadeOut 220ms ease-in forwards;
                 }
 
                 /* Panel */
-                .menu-panel[data-state='open'] {
+                .menu-panel[data-state="open"] {
                   animation: slideUpIn 320ms cubic-bezier(0.22, 1, 0.36, 1); /* smooth ease-out */
                 }
-                .menu-panel[data-state='closing'] {
-                  animation: slideDownOut 250ms cubic-bezier(0.55, 0, 0.45, 1) forwards; /* smooth ease-in */
+                .menu-panel[data-state="closing"] {
+                  animation: slideDownOut 250ms cubic-bezier(0.55, 0, 0.45, 1)
+                    forwards; /* smooth ease-in */
                 }
 
                 @keyframes fadeIn {
-                  from { opacity: 0; }
-                  to   { opacity: 1; }
+                  from {
+                    opacity: 0;
+                  }
+                  to {
+                    opacity: 1;
+                  }
                 }
                 @keyframes fadeOut {
-                  from { opacity: 1; }
-                  to   { opacity: 0; }
+                  from {
+                    opacity: 1;
+                  }
+                  to {
+                    opacity: 0;
+                  }
                 }
 
                 @keyframes slideUpIn {
-                  from { transform: translateY(6%); opacity: 0.9; }
-                  to   { transform: translateY(0%); opacity: 1; }
+                  from {
+                    transform: translateY(6%);
+                    opacity: 0.9;
+                  }
+                  to {
+                    transform: translateY(0%);
+                    opacity: 1;
+                  }
                 }
                 @keyframes slideDownOut {
-                  from { transform: translateY(0%); opacity: 1; }
-                  to   { transform: translateY(4%); opacity: 0; }
+                  from {
+                    transform: translateY(0%);
+                    opacity: 1;
+                  }
+                  to {
+                    transform: translateY(4%);
+                    opacity: 0;
+                  }
                 }
               `}</style>
             </div>

@@ -1,16 +1,12 @@
-import type { Metadata } from "next";
-import * as React from "react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Resources",
-  description:
-    "Access academic, professional, and SHPE-related resources including scholarships, career tools, online courses, and more.",
-};
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 /**
  * UX notes
  * - Uses semantic sections + in‑page chips for quick navigation
- * - Accessible external links (screen reader text: “opens in new tab”)
+ * - Accessible external links (screen reader text: "opens in new tab")
  * - Inline SVG icons (no emoji / no icon library deps)
  * - SHPE palette: NAVY #001F5B, BLUE #0070C0, CYAN #72A9BE, ORANGE #FD652F, RED‑ORANGE #D33A02, GRAY #626366
  */
@@ -61,10 +57,28 @@ const resources: Resource[] = [
 ];
 
 export default function ResourcesPage() {
+  const reduceMotion = useReducedMotion();
   const categories = React.useMemo(
     () => Array.from(new Set(resources.map((r) => r.category))),
     []
   );
+
+  // Motion variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 12 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.2, 0.8, 0.2, 1] } },
+  } as const;
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.98 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.45, ease: [0.2, 0.8, 0.2, 1] } },
+  } as const;
+
+  const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } } as const;
+
+  const anim = reduceMotion
+    ? { initial: false as const, whileInView: undefined, animate: undefined }
+    : { initial: "hidden" as const, whileInView: "visible", animate: "visible" as const };
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -83,20 +97,28 @@ export default function ResourcesPage() {
       >
         <div className="absolute inset-0 pointer-events-none opacity-20 [mask-image:radial-gradient(60%_60%_at_50%_0%,#000,transparent_75%)]" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-center">
-          <h1
+          <motion.h1
             id="resources-hero-title"
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight drop-shadow-sm"
+            variants={fadeInUp}
+            {...anim}
           >
             SHPE UPRM Resources
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg md:text-xl text-white/90">
+          </motion.h1>
+          <motion.p
+            className="mx-auto mt-4 max-w-2xl text-base sm:text-lg md:text-xl text-white/90"
+            variants={fadeInUp}
+            {...anim}
+          >
             Your hub for academic, professional, and SHPE-related materials.
-          </p>
+          </motion.p>
 
           {/* On this page: chips */}
-          <nav
+          <motion.nav
             aria-label="On this page"
             className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-3"
+            variants={stagger}
+            {...anim}
           >
             {[
               { href: "#featured", label: "Featured" },
@@ -104,34 +126,35 @@ export default function ResourcesPage() {
               { href: "#extras", label: "Additional" },
               { href: "#contact", label: "Contact" },
             ].map((item) => (
-              <a
+              <motion.a
                 key={item.href}
                 href={item.href}
                 className="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/60 focus-visible:ring-offset-[#001F5B]"
+                variants={fadeInUp}
               >
                 {item.label}
-              </a>
+              </motion.a>
             ))}
-          </nav>
+          </motion.nav>
         </div>
       </section>
 
       {/* Main */}
       <main id="main" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
         {/* Featured Resources */}
-        <Section id="featured" title="Featured Resources">
-          <ul role="list" className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Section id="featured" title="Featured Resources" anim={anim} fadeInUp={fadeInUp}>
+          <motion.ul role="list" className="grid grid-cols-1 md:grid-cols-2 gap-6" variants={stagger} {...anim}>
             {resources.map((resource, i) => (
               <li key={`${resource.title}-${i}`} className="list-none">
-                <ResourceCard resource={resource} />
+                <ResourceCard resource={resource} anim={anim} scaleIn={scaleIn} />
               </li>
             ))}
-          </ul>
+          </motion.ul>
         </Section>
 
         {/* Categories Overview */}
-        <Section id="categories" title="Resource Categories">
-          <Card className="border-2 border-gray-200 bg-gradient-to-br from-gray-50 to-white">
+        {/* <Section id="categories" title="Resource Categories" anim={anim} fadeInUp={fadeInUp}>
+          <Card className="border-2 border-gray-200 bg-gradient-to-br from-gray-50 to-white" anim={anim} scaleIn={scaleIn}>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {categories.map((category) => {
                 const count = resources.filter((r) => r.category === category).length;
@@ -149,12 +172,12 @@ export default function ResourcesPage() {
               })}
             </div>
           </Card>
-        </Section>
+        </Section> */}
 
         {/* Additional Resources */}
-        <Section id="extras" title="Additional Resources">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="text-center">
+        <Section id="extras" title="Additional Resources" anim={anim} fadeInUp={fadeInUp}>
+          <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6" variants={stagger} {...anim}>
+            <Card className="text-center" anim={anim} scaleIn={scaleIn}>
               <div className="mb-3 flex items-center justify-center">
                 <IconBook className="h-8 w-8 text-[#0070C0]" />
               </div>
@@ -163,7 +186,7 @@ export default function ResourcesPage() {
                 Access study guides, practice problems, and course materials shared by SHPE members.
               </p>
             </Card>
-            <Card className="text-center">
+            <Card className="text-center" anim={anim} scaleIn={scaleIn}>
               <div className="mb-3 flex items-center justify-center">
                 <IconBulb className="h-8 w-8 text-[#FD652F]" />
               </div>
@@ -172,7 +195,7 @@ export default function ResourcesPage() {
                 Resume templates, interview prep guides, and job search strategies for engineers.
               </p>
             </Card>
-            <Card className="text-center">
+            <Card className="text-center" anim={anim} scaleIn={scaleIn}>
               <div className="mb-3 flex items-center justify-center">
                 <IconCap className="h-8 w-8 text-[#72A9BE]" />
               </div>
@@ -181,14 +204,14 @@ export default function ResourcesPage() {
                 Find scholarship opportunities specifically for Hispanic students in STEM fields.
               </p>
             </Card>
-          </div>
+          </motion.div>
         </Section>
 
         {/* Contact */}
-        <Section id="contact" title="Have a Resource to Suggest?">
-          <Card className="text-center text-white bg-gradient-to-br from-[#001F5B] to-[#0070C0]">
+        <Section id="contact" title="Have a Resource to Suggest?" anim={anim} fadeInUp={fadeInUp}>
+          <Card className="text-center text-white bg-gradient-to-br from-[#001F5B] to-[#0070C0]" anim={anim} scaleIn={scaleIn}>
             <p className="mx-auto max-w-2xl text-white/90">
-              We’re always looking to expand our resource library. Share your recommendations with us!
+              We're always looking to expand our resource library. Share your recommendations with us!
             </p>
             <div className="mt-6">
               <Button href="mailto:shpe.uprm@upr.edu" variant="accent">
@@ -213,28 +236,32 @@ export default function ResourcesPage() {
 }
 
 /* ----------------- Composables ----------------- */
-function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+function Section({ id, title, children, anim, fadeInUp }: { id: string; title: string; children: React.ReactNode; anim: any; fadeInUp: any }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-28 mb-12 md:mb-14">
-      <h2 id={`${id}-title`} className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
+      <motion.h2 id={`${id}-title`} className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900" variants={fadeInUp} {...anim}>
         {title}
-      </h2>
+      </motion.h2>
       <div className="mt-6">{children}</div>
     </section>
   );
 }
 
-function Card({ className = "", children }: { className?: string; children: React.ReactNode }) {
+function Card({ className = "", children, anim, scaleIn }: { className?: string; children: React.ReactNode; anim?: any; scaleIn?: any }) {
   return (
-    <div className={`rounded-2xl border border-gray-100 bg-white/80 p-6 shadow-sm backdrop-blur-sm md:p-8 ${className}`}>
+    <motion.div
+      className={`rounded-2xl border border-gray-100 bg-white/80 p-6 shadow-sm backdrop-blur-sm md:p-8 ${className}`}
+      variants={scaleIn}
+      {...anim}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
-function ResourceCard({ resource }: { resource: Resource }) {
+function ResourceCard({ resource, anim, scaleIn }: { resource: Resource; anim?: any; scaleIn?: any }) {
   return (
-    <Card className="transition hover:shadow-md focus-within:shadow-md">
+    <Card className="transition hover:shadow-md focus-within:shadow-md" anim={anim} scaleIn={scaleIn}>
       <div className="mb-3 flex items-start justify-between">
         <span className="inline-block rounded-full bg-[#0070C0]/10 px-3 py-1 text-sm font-semibold text-[#0070C0]">
           {resource.category}
