@@ -298,10 +298,11 @@ export default function Home() {
               </motion.p>
               <motion.p className="mx-auto mt-2 max-w-3xl text-base text-slate-600" {...fadeInUp} transition={{ duration: 0.6, delay: 0.2 }}>
                 We foster academic excellence, professional development, and a strong community of Hispanic engineers and STEM professionals.
+              </motion.p>
               <motion.p
                 className="mt-4 text-base text-slate-600"
                 {...fadeInUp}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
               >
                 Discover the benefits and opportunities that come with being
                 part of SHPE UPRM
@@ -382,10 +383,6 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-              <motion.div className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md" {...scaleIn}>
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--shpe-blue)]/10 text-2xl">🎓</div>
-                <h4 className="text-lg font-semibold text-[var(--shpe-navy)]">Academic Excellence</h4>
-                <p className="mt-2 text-sm text-slate-600">Support and mentorship to help you succeed in your academic journey.</p>
               </motion.div>
 
               {/* Card 2 - Professional Development */}
@@ -438,10 +435,6 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-              <motion.div className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md" {...scaleIn} transition={{ duration: 0.5, delay: 0.1 }}>
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--shpe-teal)]/15 text-2xl">💼</div>
-                <h4 className="text-lg font-semibold text-[var(--shpe-navy)]">Professional Development</h4>
-                <p className="mt-2 text-sm text-slate-600">Workshops, networking events, and career opportunities.</p>
               </motion.div>
 
               {/* Card 3 - Community */}
@@ -493,10 +486,6 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-              <motion.div className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md" {...scaleIn} transition={{ duration: 0.5, delay: 0.2 }}>
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--shpe-orange)]/15 text-2xl">🤝</div>
-                <h4 className="text-lg font-semibold text-[var(--shpe-navy)]">Community</h4>
-                <p className="mt-2 text-sm text-slate-600">Build lasting connections with fellow Hispanic engineers.</p>
               </motion.div>
             </motion.div>
           </div>
