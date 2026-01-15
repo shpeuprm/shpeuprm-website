@@ -90,7 +90,7 @@ export default function ContactPage() {
             {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Have questions or want to get involved? We'd love to hear from you!
+            Have questions or want to get involved? We&apos;d love to hear from you!
           </motion.p>
         </motion.div>
       </section>
@@ -108,7 +108,7 @@ export default function ContactPage() {
             >
               <div className="mb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#001F5B] mb-3">Send Us a Message</h2>
-                <p className="text-slate-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+                <p className="text-slate-600">Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
               </div>
 
               {status.type && (

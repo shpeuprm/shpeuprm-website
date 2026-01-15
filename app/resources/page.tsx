@@ -211,7 +211,7 @@ export default function ResourcesPage() {
         <Section id="contact" title="Have a Resource to Suggest?" anim={anim} fadeInUp={fadeInUp}>
           <Card className="text-center text-white bg-gradient-to-br from-[#001F5B] to-[#0070C0]" anim={anim} scaleIn={scaleIn}>
             <p className="mx-auto max-w-2xl text-white/90">
-              We're always looking to expand our resource library. Share your recommendations with us!
+              We&apos;re always looking to expand our resource library. Share your recommendations with us!
             </p>
             <div className="mt-6">
               <Button href="mailto:shpe.uprm@upr.edu" variant="accent">
